@@ -1,9 +1,10 @@
 const Mongoose = require('mongoose');
 
-const db = Mongoose.connect('mongodb://localhost/tokens', { useNewUrlParser: true, useUnifiedTopology: true }).connection;
+const conn = Mongoose.connect('mongodb://localhost/tokens', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = Mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
-
 
 db.once('open', function() {
     console.log("Database connection established.")
@@ -12,18 +13,25 @@ db.once('open', function() {
 const tokenSchema = new Mongoose.Schema({
     minedBy: String, // miner address
     type: String,
-    tokenID: Number;
+    tokenID: Number,
     data: Object
 });
 
 const tokenRecord = Mongoose.model("tokenRecord", tokenSchema);
 
-class TokenDB {
-    static addToken(minedBy, type, data, callback) {
+const walletSchema = new Mongoose.Schema({
+    id: String, 
+    location: String // "earth" | "space"
+});
+
+const walletRecord = Mongoose.model("walletRecord", walletSchema);
+
+class DB {
+    static addToken(minedBy, type, tokenID, data, callback) {
         new tokenRecord({
             minedBy: minedBy,
             type: type,
-            tokenID: Number,
+            tokenID: tokenID,
             data: data
         }).save(function(err, record) {
             if(err) return console.error(err);
@@ -35,6 +43,21 @@ class TokenDB {
             console.error(err);
         });
     }
+
+    static addWallet(wallet, location, callback) {
+        new walletRecord({
+            id: wallet,
+            location: location
+        }).save(function(err, wallet) {
+            if(err) return console.error(err);
+            callback(wallet);
+        });
+    }
+    static async getWallet(id) {
+        return await walletRecord.find({ id: id }, function(err, record) {
+            console.error(err);
+        });
+    }
 }
 
-module.exports = TokenDB;
+module.exports = DB;

@@ -34,6 +34,7 @@ var contract = new web3.eth.Contract(test_abi, "0x54b1f3eC9D8D5c57254B9401521681
 class OurContract {
 
     static registerMineEventHandler(handle) {
+        console.log("Mining event handler registered");
         contract.events.Mined(function(err, ev) {
             handle(err, ev);
         });
@@ -43,7 +44,5 @@ class OurContract {
         return await web3.eth.getTransaction(txHash);
     }
 }
-
-OurContract.registerMineEventHandler((a, b) => {});
 
 module.exports = OurContract;
