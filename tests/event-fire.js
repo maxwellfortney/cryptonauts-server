@@ -2,7 +2,6 @@ const Tx = require('ethereumjs-tx').Transaction
 const Web3 = require('web3');
 const Contract = require('web3-eth-contract');
 
-//const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/48dbaad3d97f4f6abebb51c4df73e834'));
 const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/48dbaad3d97f4f6abebb51c4df73e834'));
 
 const account = require('./test-wallet.json');
