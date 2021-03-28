@@ -1,7 +1,9 @@
 const OurContract = require('./contract.js');
 const { addWallet } = require('./db.js');
-const Chance = require('chance').Chance();
+const Chance_ = require('chance');
 const DB = require('./db.js');
+
+var Chance = new Chance_();
 
 const exampleEvent = {
     removed: false,
@@ -29,10 +31,9 @@ function runProbTree(obj) {
     a = [];
     b = [];
     for(i = 0; i < pairs.length; i++) {
-        a.push(pairs[i][0]);
+        a.push(parseFloat(pairs[i][0]));
         b.push(pairs[i][1]);
     }
-    console.log([b, a]);
     return Chance.weighted(b, a);
 }
 
@@ -107,5 +108,9 @@ class Generator {
         return final;
     }
 }
+
+Generator.generate(exampleEvent, "0x52bB3Ddd68Ab65CCA6F244635796588b237A3670").then((x) => {
+    console.log(x);
+});
 
 module.exports = Generator;
