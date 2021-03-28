@@ -109,8 +109,4 @@ class Generator {
     }
 }
 
-Generator.generate(exampleEvent, "0x52bB3Ddd68Ab65CCA6F244635796588b237A3670").then((x) => {
-    console.log(x);
-});
-
 module.exports = Generator;
