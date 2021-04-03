@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <title>Coal</title>
+
+        <!-- Import Fonts -->
+        <link rel="stylesheet" href="./css/fonts.css" />
+
+        <!-- Temp imports from google fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            html,
+            body {
+                margin: 0;
+                width: 1200px;
+                min-width: 1200px;
+                max-width: 1200px;
+                height: 1950px;
+                min-height: 1950px;
+                max-height: 1950px;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                overflow: hidden;
+            }
+
+            .artContainer {
+                width: 100%;
+                height: 100%;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .blurredContainer {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                z-index: -1;
+            }
+
+            .blurredBg {
+                height: 100%;
+            }
+            .renderedArt {
+                width: 100%;
+                background: transparent !important;
+                background-color: transparent !important;
+                border: none;
+            }
+
+            .infoContainer {
+                padding: 20px;
+                height: 460px;
+                min-height: 460px;
+                max-height: 460px;
+                width: 1160px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .infoMiddle {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                flex-grow: 1;
+            }
+
+            .infoMiddle p {
+                margin-bottom: 13px;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .name {
+                font-family: "Titillium Web";
+                line-height: 100px;
+                font-weight: 700;
+                font-size: 100px;
+            }
+
+            .subText {
+                font-family: "Titillium Web";
+                line-height: 60px;
+                font-weight: 300;
+                font-size: 60px;
+            }
+
+            .mineID {
+                width: 100%;
+                text-align: right;
+                font-family: "Didact Gothic";
+                font-size: 80px;
+                line-height: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="artContainer">
+            <div class="blurredContainer">
+                <img src="./assets/blurred-cave.jpg" class="blurredBg" />
+            </div>
+            <img src="./assets/gold-example.png" class="renderedArt" />
+        </div>
+        <div class="infoContainer">
+            <p class="name">Gold Nugget</p>
+            <div class="infoMiddle">
+                <p class="location subText">
+                    C/A: 38.3381° N, 19.4569° E, Earth
+                </p>
+                <p class="date subText">DATE REF: Apr 3 12:37 2021</p>
+                <p class="netWeight subText">NET/WT: 28.531g</p>
+            </div>
+            <p class="mineID">#0404</p>
+        </div>
+    </body>
+</html>
