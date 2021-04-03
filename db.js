@@ -14,7 +14,8 @@ const tokenSchema = new Mongoose.Schema({
     minedBy: String, // miner address
     type: String,
     tokenID: Number,
-    data: Object
+    data: Object,
+    render: String
 });
 
 const tokenRecord = Mongoose.model("tokenRecord", tokenSchema);
@@ -27,12 +28,14 @@ const walletSchema = new Mongoose.Schema({
 const walletRecord = Mongoose.model("walletRecord", walletSchema);
 
 class DB {
-    static addToken(minedBy, type, tokenID, data, callback) {
+    static addToken(minedBy, type, tokenID, location, data, callback) {
         new tokenRecord({
             minedBy: minedBy,
             type: type,
             tokenID: tokenID,
-            data: data
+            location: location,
+            data: data,
+            render: ""
         }).save(function(err, record) {
             if(err) return console.error(err);
             callback(record);

@@ -53,6 +53,8 @@ function generateTimestamp() {
 
 function generateCoal(ev, w) {
     return {
+        type: "coal",
+        image: "render/static/coal/01.png",
         displayName: "Coal",
         location: generateEarthLocation(),
         time: generateTimestamp()
@@ -61,6 +63,8 @@ function generateCoal(ev, w) {
 
 function generateOil(ev, w) {
     return {
+        type: "oil",
+        image: "render/static/oil/01.png",
         displayName: "Oil",
         location: generateEarthLocation(),
         time: generateTimestamp()
@@ -69,6 +73,8 @@ function generateOil(ev, w) {
 
 function generateUranium(ev, w) {
     return {
+        type: "uranium",
+        image: "render/static/uranium/01_earth.png",
         displayName: "Uranium-235",
         location: generateEarthLocation(),
         time: generateTimestamp()
